@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA FIT AI // SIVANJINI Neural Athletics & Fitness Plan Generator</title>
+  <meta name="description" content="State-of-the-art AI fitness plan generator. Synthesize personalized periodized workout splits, precision macro diets, and progressive overload protocols based on sports science.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Graphic Elements -->
+  <div class="ambient-grid"></div>
+  <div class="ambient-orb ambient-orb-1"></div>
+  <div class="ambient-orb ambient-orb-2"></div>
+
+  <div class="app-container">
+    <!-- Main Header -->
+    <header class="app-header">
+      <a href="#" class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>AURA<span class="highlight">FIT</span> AI</h1>
+          <span class="brand-tagline">Neural Athletics &amp; Kinetic Architecture</span>
+        </div>
+      </a>
+
+      <div class="header-status">
+        <div class="status-badge">
+          <div class="pulse-dot"></div>
+          <span>NEURAL ENGINE ACTIVE</span>
+        </div>
+
+        <div class="header-actions">
+          <button id="btnLoadSaved" class="icon-btn" title="Load Saved Blueprint">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+              <polyline points="17 21 17 13 7 13 7 21"></polyline>
+              <polyline points="7 3 7 8 15 8"></polyline>
+            </svg>
+          </button>
+          <button id="soundToggleBtn" class="icon-btn active" title="Toggle Sound FX">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Showcase Section -->
+    <section class="hero-card">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            BIOMECHANICAL INTELLIGENCE v4.2
+          </div>
+          <h2 class="hero-title">Precision <span>SIVARANJINI AI Fitness Architecture</span> for Elite Performance</h2>
+          <p class="hero-desc">
+            Transform your physiology with an algorithmically optimized training matrix. Instant Mifflin-St Jeor metabolic profiling, custom periodized splits, and nutrition blueprints calibrated to your exact equipment and biology.
+          </p>
+
+          <div class="hero-presets-strip">
+            <span class="preset-label">⚡ 1-Click Fast Presets:</span>
+            <div class="preset-buttons">
+              <button class="preset-pill" data-preset="hypertrophy">💪 Lean Bulk (4-Day)</button>
+              <button class="preset-pill" data-preset="shred">🔥 Fat Burner Blitz (5-Day)</button>
+              <button class="preset-pill" data-preset="home">🏠 Home Minimalist (3-Day)</button>
+              <button class="preset-pill" data-preset="strength">⚡ Power &amp; Strength (4-Day)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img src="assets/hero-banner.jpg" alt="AURA FIT AI Biomechanics Hologram" loading="eager">
+          <div class="hero-telemetry-badge">
+            <div class="telemetry-item">
+              <span class="telemetry-val">99.4%</span>
+              <span class="telemetry-lbl">Bio-Accuracy</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="telemetry-val">Dynamic</span>
+              <span class="telemetry-lbl">Periodization</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Generator Studio Form -->
+    <section id="studioSection" class="studio-section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Configure Your Training Matrix</h2>
+          <p class="section-subtitle">Input your biometrics, target goals, schedule, and equipment for an optimized protocol.</p>
+        </div>
+      </div>
+
+      <form id="fitnessStudioForm">
+        <div class="studio-grid">
+          <!-- Step 1: Biometric Data -->
+          <div class="studio-card col-7">
+            <div class="card-title-group">
+              <span class="step-indicator">01</span>
+              <h3 class="card-title">Biological Profile &amp; Biometrics</h3>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="selectSex">Biological Sex</label>
+                <select id="selectSex" class="form-select">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="inputAge">Age (Years)</label>
+                <input type="number" id="inputAge" class="form-input" value="25" min="14" max="95" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="inputHeight">
+                  Height
+                  <button type="button" id="unitHeightToggle" class="unit-toggle">Switch to ft</button>
+                </label>
+                <input type="text" id="inputHeight" class="form-input" value="178" placeholder="e.g. 178 cm" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="inputWeight">
+                  Current Weight
+                  <button type="button" id="unitWeightToggle" class="unit-toggle">Switch to lbs</button>
+                </label>
+                <input type="number" id="inputWeight" class="form-input" value="76" min="30" max="300" step="0.5" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="inputTargetWeight">Target Weight</label>
+                <input type="number" id="inputTargetWeight" class="form-input" value="80" min="30" max="300" step="0.5" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="selectActivity">Daily Activity Level</label>
+                <select id="selectActivity" class="form-select">
+                  <option value="sedentary">Sedentary (Desk Job, Minimal Steps)</option>
+                  <option value="light">Lightly Active (1-3 Days/Wk light exercise)</option>
+                  <option value="moderate" selected>Moderately Active (3-5 Days/Wk moderate)</option>
+                  <option value="heavy">Very Active (6-7 Days/Wk hard training)</option>
+                  <option value="athlete">Athlete / Extreme (Physical labor &amp; sport)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Experience & Setup -->
+          <div class="studio-card col-5">
+            <div class="card-title-group">
+              <span class="step-indicator">02</span>
+              <h3 class="card-title">Experience &amp; Commitment</h3>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 1.25rem;">
+              <label class="form-label">Training Experience Level</label>
+              <div class="choice-grid">
+                <label class="choice-card">
+                  <input type="radio" name="experience" value="beginner">
+                  <div class="choice-title">Beginner</div>
+                  <div class="choice-desc">0 - 12 Months</div>
+                </label>
+                <label class="choice-card selected">
+                  <input type="radio" name="experience" value="intermediate" checked>
+                  <div class="choice-title">Intermediate</div>
+                  <div class="choice-desc">1 - 3 Years</div>
+                </label>
+                <label class="choice-card">
+                  <input type="radio" name="experience" value="advanced">
+                  <div class="choice-title">Advanced</div>
+                  <div class="choice-desc">3+ Years</div>
+                </label>
+              </div>
+            </div>
+
+            <div class="slider-group" style="margin-bottom: 1rem;">
+              <div class="slider-header">
+                <label class="form-label" style="margin: 0;">Weekly Frequency</label>
+                <span id="daysPerWeekVal" class="slider-val-badge">4 Days / Wk</span>
+              </div>
+              <input type="range" id="daysPerWeekSlider" class="custom-range" min="2" max="6" value="4">
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-header">
+                <label class="form-label" style="margin: 0;">Session Duration</label>
+                <span id="sessionDurationVal" class="slider-val-badge">60 Mins</span>
+              </div>
+              <input type="range" id="sessionDurationSlider" class="custom-range" min="30" max="90" step="15" value="60">
+            </div>
+          </div>
+
+          <!-- Step 3: Primary Goal Matrix -->
+          <div class="studio-card col-12">
+            <div class="card-title-group">
+              <span class="step-indicator">03</span>
+              <h3 class="card-title">Primary Fitness Trajectory</h3>
+            </div>
+
+            <div class="choice-grid choice-grid-lg">
+              <label class="choice-card selected">
+                <input type="radio" name="goal" value="hypertrophy" checked>
+                <div class="choice-icon">⚡</div>
+                <div class="choice-title">Hypertrophy (Muscle Gain)</div>
+                <div class="choice-desc">Caloric surplus, 8-12 reps per set, mechanical tension &amp; maximum muscle fiber recruitment.</div>
+              </label>
+
+              <label class="choice-card">
+                <input type="radio" name="goal" value="fat_loss">
+                <div class="choice-icon">🔥</div>
+                <div class="choice-title">Fat Loss &amp; Shred</div>
+                <div class="choice-desc">Caloric deficit, high training density, preserves lean tissue while incinerating body fat.</div>
+              </label>
+
+              <label class="choice-card">
+                <input type="radio" name="goal" value="recomp">
+                <div class="choice-icon">⚖️</div>
+                <div class="choice-title">Body Recomposition</div>
+                <div class="choice-desc">Isocaloric maintenance, simultaneous moderate fat burn and clean muscular development.</div>
+              </label>
+
+              <label class="choice-card">
+                <input type="radio" name="goal" value="strength">
+                <div class="choice-icon">🏋️‍♂️</div>
+                <div class="choice-title">Pure Strength &amp; Power</div>
+                <div class="choice-desc">Heavy compound focus, 4-6 reps, CNS neuromuscular adaptation &amp; maximum force output.</div>
+              </label>
+
+              <label class="choice-card">
+                <input type="radio" name="goal" value="calisthenics">
+                <div class="choice-icon">🤸</div>
+                <div class="choice-title">Functional Calisthenics</div>
+                <div class="choice-desc">Relative bodyweight power, kinetic joint control, core integration &amp; dynamic athletic mobility.</div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 4: Equipment & Dietary Matrix -->
+          <div class="studio-card col-6">
+            <div class="card-title-group">
+              <span class="step-indicator">04</span>
+              <h3 class="card-title">Equipment Environment</h3>
+            </div>
+
+            <div class="choice-grid">
+              <label class="choice-card selected">
+                <input type="radio" name="equipment" value="gym" checked>
+                <div class="choice-icon">🏢</div>
+                <div class="choice-title">Full Commercial Gym</div>
+                <div class="choice-desc">Barbells, cables, dumbbells, and specialized machines.</div>
+              </label>
+
+              <label class="choice-card">
+                <input type="radio" name="equipment" value="dumbbells">
+                <div class="choice-icon">🔩</div>
+                <div class="choice-title">Dumbbells &amp; Bench</div>
+                <div class="choice-desc">Home gym setup with free-weights and adjustable bench.</div>
+              </label>
+
+              <label class="choice-card">
+                <input type="radio" name="equipment" value="bodyweight">
+                <div class="choice-icon">🏃</div>
+                <div class="choice-title">Bodyweight Only</div>
+                <div class="choice-desc">Zero equipment needed; calisthenics &amp; floor progressions.</div>
+              </label>
+
+              <label class="choice-card">
+                <input type="radio" name="equipment" value="bands">
+                <div class="choice-icon">🎗️</div>
+                <div class="choice-title">Resistance Bands</div>
+                <div class="choice-desc">Elastic loop bands, pull-aparts, and anchor exercises.</div>
+              </label>
+            </div>
+          </div>
+
+          <div class="studio-card col-6">
+            <div class="card-title-group">
+              <span class="step-indicator">05</span>
+              <h3 class="card-title">Nutritional Architecture</h3>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 1.25rem;">
+              <label class="form-label">Dietary Framework</label>
+              <div id="dietPills" class="pill-group">
+                <div class="pill-option active" data-val="high_protein">🥩 High Protein Omnivore</div>
+                <div class="pill-option" data-val="mediterranean">🫒 Mediterranean Clean</div>
+                <div class="pill-option" data-val="vegetarian">🥑 High-Protein Vegetarian</div>
+                <div class="pill-option" data-val="vegan">🌱 100% Plant-Based Vegan</div>
+                <div class="pill-option" data-val="keto">🥓 Low-Carb Ketogenic</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Nutrition Principles Calibrated</label>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+                Algorithm automatically distributes target macros across 4 timed meals, factoring in thermic effect of food (TEF), target hydration, and optimal leucine threshold triggers.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Banner -->
+        <div class="action-banner">
+          <div class="action-info">
+            <h3>Ready to Synthesize Your Training Protocol?</h3>
+            <p>Our sports-science engine will generate your complete periodized schedule, exercise specs, rest timers, and macros.</p>
+          </div>
+          <button type="submit" class="btn-generate">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            Synthesize AI Blueprint
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Simulated Neural Synthesis Overlay -->
+    <div id="neuralOverlay" class="neural-overlay">
+      <div class="neural-loader-box">
+        <div class="neural-spinner">
+          <div class="neural-spinner-circle"></div>
+          <div class="neural-spinner-inner"></div>
+        </div>
+        <h3 class="neural-loader-title">Synthesizing Protocol</h3>
+        <p id="neuralStepText" class="neural-step-text">Initiating neural bio-computation...</p>
+        <div class="neural-progress-bar-bg">
+          <div id="neuralProgressFill" class="neural-progress-bar-fill"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Output Protocol Results Section -->
+    <section id="resultsSection" class="results-section">
+      <!-- Protocol Header Banner -->
+      <div class="protocol-hero">
+        <div class="protocol-header-top">
+          <div>
+            <div id="resPersonaTag" class="protocol-persona-tag">Hypertrophic Mass Architect</div>
+            <h2 id="resTitle" class="protocol-title">4-Day Periodized Matrix</h2>
+            <p id="resSubtitle" class="protocol-subtitle">Calibrated for Hypertrophy • Intermediate Level</p>
+          </div>
+
+          <div class="protocol-actions">
+            <button id="btnSavePlan" class="btn-primary-sm">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+              Save Plan
+            </button>
+            <button id="btnPrintPlan" class="btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+              Print / PDF
+            </button>
+            <button id="btnCopyMarkdown" class="btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              Copy Markdown
+            </button>
+            <button id="btnModifyPlan" class="btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+              Adjust Parameters
+            </button>
+          </div>
+        </div>
+
+        <!-- Metric Telemetry Cards -->
+        <div class="telemetry-row">
+          <div class="metric-tile">
+            <div class="metric-lbl">Target Caloric Intake</div>
+            <div class="metric-number"><span id="resCalories">2,850</span> <span class="metric-unit">kcal</span></div>
+            <div class="metric-sub">Daily Energy Goal</div>
+          </div>
+
+          <div class="metric-tile violet">
+            <div class="metric-lbl">Protein Target</div>
+            <div class="metric-number"><span id="resProtein">172</span> <span class="metric-unit">grams</span></div>
+            <div class="metric-sub" id="macroPctProtein">25% of calories</div>
+          </div>
+
+          <div class="metric-tile amber">
+            <div class="metric-lbl">Carbohydrates</div>
+            <div class="metric-number"><span id="resCarbs">340</span> <span class="metric-unit">grams</span></div>
+            <div class="metric-sub" id="macroPctCarbs">50% of calories</div>
+          </div>
+
+          <div class="metric-tile coral">
+            <div class="metric-lbl">Healthy Fats</div>
+            <div class="metric-number"><span id="resFats">78</span> <span class="metric-unit">grams</span></div>
+            <div class="metric-sub" id="macroPctFats">25% of calories</div>
+          </div>
+
+          <div class="metric-tile emerald">
+            <div class="metric-lbl">Daily Hydration</div>
+            <div class="metric-number"><span id="resWater">3.4</span> <span class="metric-unit">Liters</span></div>
+            <div class="metric-sub">Electrolyte Balance</div>
+          </div>
+
+          <div class="metric-tile">
+            <div class="metric-lbl">Calculated TDEE</div>
+            <div class="metric-number"><span id="resTDEE">2,480</span></div>
+            <div class="metric-sub">Base Daily Expenditure</div>
+          </div>
+        </div>
+
+        <!-- Macro Visualizer Bar -->
+        <div class="macro-visualizer">
+          <div class="macro-bar-label">
+            <span>Macronutrient Energy Distribution</span>
+            <span>Target Partition Ratio</span>
+          </div>
+          <div class="macro-stacked-bar">
+            <div id="macroBarProtein" class="macro-segment protein" style="width: 25%;"></div>
+            <div id="macroBarCarbs" class="macro-segment carbs" style="width: 50%;"></div>
+            <div id="macroBarFats" class="macro-segment fats" style="width: 25%;"></div>
+          </div>
+          <div class="macro-legend">
+            <div class="legend-item"><div class="legend-dot protein"></div> Protein (4 kcal/g)</div>
+            <div class="legend-item"><div class="legend-dot carbs"></div> Carbohydrates (4 kcal/g)</div>
+            <div class="legend-item"><div class="legend-dot fats"></div> Fats (9 kcal/g)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workout Routine Section -->
+      <div class="routine-container">
+        <div class="section-head">
+          <div>
+            <h3 class="section-title">Weekly Training Schedule</h3>
+            <p class="section-subtitle">Click any day tab to view assigned compound lifts, volume cues, and launch rest intervals.</p>
+          </div>
+        </div>
+
+        <!-- Day Tabs -->
+        <div id="routineTabsContainer" class="routine-nav-tabs"></div>
+
+        <!-- Selected Day Exercise List -->
+        <div id="workoutDayContent"></div>
+      </div>
+
+      <!-- Nutrition & Meal Schedule -->
+      <div class="nutrition-section" style="margin-bottom: 2.5rem;">
+        <div class="section-head">
+          <div>
+            <h3 class="section-title">Precision Nutrition Blueprint</h3>
+            <p class="section-subtitle">Timed feeding windows to optimize muscle protein synthesis, glycogen recharge, and satiety.</p>
+          </div>
+        </div>
+
+        <div id="nutritionGrid" class="nutrition-grid"></div>
+      </div>
+
+      <!-- Coach Intelligence & Supplements -->
+      <div class="coach-grid">
+        <div class="coach-box">
+          <h4 class="coach-box-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            Progressive Overload Directives
+          </h4>
+          <ul id="coachOverloadList" class="coach-list"></ul>
+        </div>
+
+        <div class="coach-box">
+          <h4 class="coach-box-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Evidence-Based Supplement Stack
+          </h4>
+          <ul id="coachSupplementsList" class="coach-list"></ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Floating Rest Timer Widget -->
+  <div id="floatingRestTimer" class="floating-rest-timer">
+    <div class="timer-ring-container">
+      <svg class="timer-circle-svg">
+        <circle class="timer-circle-bg" cx="24" cy="24" r="20" />
+        <circle id="timerCircleBar" class="timer-circle-bar" cx="24" cy="24" r="20" />
+      </svg>
+    </div>
+    <div id="restTimerDisplay" class="timer-display">1:30</div>
+    <div class="timer-controls">
+      <button id="btnTimerMinus15" class="timer-btn">-15s</button>
+      <button id="btnTimerPlay" class="timer-btn">⏸</button>
+      <button id="btnTimerPlus15" class="timer-btn">+15s</button>
+      <button id="btnTimerClose" class="timer-btn" style="color: var(--accent-coral);" title="Close Timer">✕</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Bar -->
+  <div id="toastMsg" class="toast-msg"></div>
+
+  <!-- Main Engine Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
